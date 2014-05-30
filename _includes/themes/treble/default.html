@@ -224,8 +224,24 @@
             <!-- Start Article -->
             <article>
                 <div class="row-fluid">
+                    <!-- Contact form -->
+                    <div id="contact_form_container" class="span6">
+                        <span id='contact_form_wrapper'>
+                            <h5>Drop Us A Line</h5>
+                            <form id='contact_form'>
+                                <span id='name_errors' style='color:red'></span>
+                                <input type="text" name="name" class="span12" placeholder="Title" required="required">
+                                <span id='email_errors' style='color:red'></span>
+                                <input type="email" name="email" class="span12" placeholder="Email" required="required">
+                                <textarea rows="10" name="message" class="span12" placeholder="Message"></textarea>
+                                <input type="submit" value="Send" class="btn btn-primary">
+                            </form>
+                        </span>
+                    </div>
+                    <!-- End Contact form -->
                     <!-- Contact information -->
                     <div class="span5 offset1">
+                        <h5>Meet Us</h5>
                         <div class="media">
                             <div class="social-icons sicon-white pull-left">
                                 <a href="#" class="sicon-mail"><i>email</i></a>
@@ -234,8 +250,6 @@
                                 info@sourcelab.technology
                             </div>
                         </div>
-
-                        <h5>Meet Us</h5>
                         <div class="media">
                             <div class="social-icons sicon-white pull-left">
                                 <a href="#" class="sicon-place"><i>Location</i></a>
@@ -308,6 +322,35 @@
       ga('create', 'UA-51086341-1', 'sourcelab.technology');
       ga('send', 'pageview');
 
+    </script>
+
+    <script type="text/javascript">
+        $( document ).ready(function() {
+            var contact_form = $('#contact_form');
+
+            contact_form.submit(function(event) {
+                event.preventDefault();
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'http://sourcelab.technology/contact/',
+                    data: contact_form.serialize(),
+                    success: function (data) {
+                        $('#contact_form_wrapper').fadeOut('slow', function() {
+                            $('#contact_form_container').html("<p>Thanks! We'll get in touch shortly!</p>");
+                        });
+                    },
+                    error: function(data) {
+                        errors = jQuery.parseJSON(data.responseText).errors
+
+                        for (var key in errors) {
+                            $('#'+key+'_errors').html(errors[key]);
+                            console.log(key, errors[key]);
+                        }
+                    }
+                })
+            });
+        });
     </script>
 </body>
 </html>
