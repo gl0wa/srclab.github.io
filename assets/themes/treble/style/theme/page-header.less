@@ -7,22 +7,22 @@
     padding-bottom: 40px;
     text-align: center;
 }
- 
+
 #navigation {
-    background-color: @bodyBackground;
+    background-color: @slGrey;
     width: 100%;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.65);
+    box-shadow: 0 0 2px @white;
     z-index: 2000;
 
       // Fix for IE7's bad z-indexing so dropdowns don't appear below content that follows the navbar
       *position: relative;
       *z-index: 2000;
-    
+
     .brand {
-        padding: 7px 100px 8px 0px;
+        padding: 7px 100px 5px 0px;
         text-align: left;
     }
-    
+
     #main-menu {
         display: inline-block;
         float: none;
@@ -33,7 +33,7 @@
         line-height: 18px;
         font-size: 12px;
         list-style: none;
-        
+
         li {
             display: inline-block;
             position: relative;
@@ -49,11 +49,11 @@
             text-transform: uppercase;
             line-height: 18px;
             letter-spacing: 1px;
-            color: @grayDarker;
+            color: @white;
             padding: 12px 15px;
             margin: 0px;
             text-decoration: none;
-            text-shadow: 0 1px 0 #ffffff;
+            text-shadow: 0 1px 0 @grayDarker;
             position: relative;
             display: block;
         }
@@ -75,7 +75,7 @@
             width: 7px;
         }
     }
-    
+
     .mobile-menu {
         display: none;
         float: right;
@@ -83,7 +83,7 @@
         margin-left: 5px;
         margin-top: 3px;
         cursor: pointer;
-        
+
         .icon-bar {
             background-color: @grayDarker;
             .border-radius(1px);
@@ -93,7 +93,7 @@
             width: 26px;
             margin-bottom: 3px;
             margin-top: 1px;
-            
+
         }
         &:hover {
             .icon-bar {
@@ -101,4 +101,4 @@
             }
         }
     }
-}  
+}
